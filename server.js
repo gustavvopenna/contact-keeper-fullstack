@@ -7,6 +7,7 @@ const app = express()
 connectDB()
 
 //Init Middleware
+//Config to aceept body data on HTTP request
 app.use(express.json({ extended: false }))
 
 app.get('/', (req, res) =>

@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://gustavo123:gustavo123@cluster0-5bjnx.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://gustavo123:gustavo123@cluster0-5bjnx.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "s3cret"
 }
