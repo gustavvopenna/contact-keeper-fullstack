@@ -102,21 +102,26 @@ router.put('/:id', auth, async (req, res) => {
 // @desc        Delete a contact
 // @access      Private
 router.delete('/:id', auth, async (req, res) => {
-  const { id } = req.params
+  try {
+    const { id } = req.params
 
-  let contact = await Contact.findById(id)
+    let contact = await Contact.findById(id)
 
-  if (!contact) {
-    res.status(404).json({ msg: 'Contact could not be deleted' })
+    if (!contact) {
+      res.status(404).json({ msg: 'Contact could not be deleted' })
+    }
+
+    if (contact.user.toString() !== req.user.id) {
+      res.status(401).json({ msg: 'Unauthorized to delete contact' })
+    }
+
+    contact = await Contact.findByIdAndRemove(req.params.id)
+
+    res.status(200).json(contact)
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).json({ msg: 'Server Error' })
   }
-
-  if (contact.user.toString() !== req.user.id) {
-    res.status(401).json({ msg: 'Unauthorized to delete contact' })
-  }
-
-  contact = await Contact.findByIdAndDelete(req.params.id)
-
-  res.json(contact)
 })
 
 module.exports = router
