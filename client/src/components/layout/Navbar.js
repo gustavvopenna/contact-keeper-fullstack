@@ -5,8 +5,10 @@ import * as Icon from 'react-feather'
 const Navbar = ({ title }) => {
   return (
     <div className="navbar bg-primary">
-      <Icon.Circle />
-      {title}
+      <h1>
+        <Icon.Calendar />
+        {title}
+      </h1>
     </div>
   )
 }
