@@ -7,6 +7,7 @@ const About = () => {
       <p>
         <strong>Version 1.0</strong>
       </p>
+      {/* FIXME background and position  */}
       <p className="bg-dark p">
         Full stack React App for keeping and organize contacts
       </p>
