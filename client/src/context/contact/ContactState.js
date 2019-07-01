@@ -19,19 +19,22 @@ const ContactState = props => {
         name: 'Gustavo Peña',
         email: 'gustavo.pema@gmail.com',
         phone: '55-6376-8310',
-        type: 'personal'
+        type: 'personal',
+        id: uuid.v4()
       },
       {
         name: 'Maribel Sosa',
         email: 'mary@gmail.com',
         phone: '55-4444-5555',
-        type: 'personal'
+        type: 'personal',
+        id: uuid.v4()
       },
       {
         name: 'Alan Ortega',
         email: 'ortega_alan@gmail.com',
         phone: '55-4411-3322',
-        type: 'professional'
+        type: 'professional',
+        id: uuid.v4()
       }
     ]
   }
@@ -45,13 +48,16 @@ const ContactState = props => {
     dispatch({ type: ADD_CONTACT, payload: contact })
   }
 
+  // Delete contact
+  const deleteContact = id => {
+    dispatch({ type: DELETE_CONTACT, payload: id })
+  }
+
   // Current contact
 
   //Clear current contact
 
   // Update contact
-
-  // Remove contact
 
   // Filter contacts
 
@@ -61,7 +67,8 @@ const ContactState = props => {
     <ContactContext.Provider
       value={{
         contacts: state.contacts,
-        addContact
+        addContact,
+        deleteContact
       }}
     >
       {props.children}
